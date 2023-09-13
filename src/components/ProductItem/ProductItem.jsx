@@ -1,26 +1,35 @@
 import React from 'react';
-import Button from "../Button/Button";
 import './ProductItem.css';
-
-const ProductItem = ({ product, className, onAdd }) => {
-
-    const onAddHandler = () => {
-        onAdd(product);
-    }
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions }) => {
+    // Создаем массив ссылок на другие вопросы, кроме текущего
+    const otherQuestions = allQuestions.filter((q) => q.number !== number);
 
     return (
-        <div className={'product ' + className}>
-            <div className={'img'} />
-            <div className={'title'}>{product.title}</div>
-            <div className={'description'}>{product.description}</div>
-            <div className={'price'}>
-                <span>Стоимость: <b>{product.price}</b></span>
+        <div className="question">
+            <div className="question-header">
+                <div className="question-number">{number}</div>
+                <div className="question-title">{title}</div>
             </div>
-            <Button className={'add-btn'} onClick={onAddHandler}>
-                Добавить в корзину
-            </Button>
+
+            <div className="question-body">
+                <button className="question-prev" onClick={onPrevClick}>
+                    <FaArrowLeft />
+                </button>
+                {input}
+                <button className="question-next" onClick={onNextClick}>
+                    <FaArrowRight />
+                </button>
+            </div>
+            <div className="question-footer">
+                {otherQuestions.map((q) => (
+                    <a key={q.number} href={`#${q.number}`} className="question-link">
+                        {q.number}
+                    </a>
+                ))}
+            </div>
         </div>
     );
 };
 
-export default ProductItem;
+export default Question;
