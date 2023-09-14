@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import ProductItem from "../ProductItem/ProductItem";
 import DrawingComponent from "../DrawingComponent/DrawingComponent"
 import CirclesComponent from "../CirclesComponent/CirclesComponent"
@@ -83,7 +84,15 @@ const ProductList = () => {
                     </div>
                 )
             case 'email':
-                return <input type={currentQuestion.type} />;
+                return (
+                    <>
+                        <input type={currentQuestion.type} />
+                        <div className={`${styles.mt4} ${styles.termsForm}`}>
+                            <input type="checkbox" id="terms" name="scales" />
+                            <label htmlFor="terms">Я согласен(а) на обработку <NavLink to="https://xn--d1acamsh7dwd.net/Soglasie_na_obrabotku_personalnih_dannih.pdf">персональных данных</NavLink></label>
+                        </div>
+                    </>
+                );
             case 'text':
                 return <input type={currentQuestion.type} />;
             case 'radio':
@@ -92,7 +101,7 @@ const ProductList = () => {
                         {currentQuestion.options.map((option, index) => (
                             <div key={index} className={styles.radioCardItem}>
                                 <input type="radio" id={index} value={option} name={`question - ${currentQuestion.number}`} />
-                                <label for={index}>{option}</label>
+                                <label htmlFor={index}>{option}</label>
                             </div>
                         ))}
                     </div>
@@ -100,10 +109,10 @@ const ProductList = () => {
             case 'text&pictures':
                 return (
                     <div className={styles.container}>
-                        <img src={image1} alt="" />
+                        <img src={image1} alt="" className={styles.mb2} />
                         <input type="text" />
 
-                        <img src={image2} alt="" />
+                        <img src={image2} alt="" className={styles.mb2} />
                         <input type="text" />
                     </div>
                 )
