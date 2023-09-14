@@ -83,26 +83,6 @@ select {
     cursor: pointer;
 }
 
-.radioCardItem label {
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    padding-left: 25px;
-    margin-right: 0;
-    line-height: 18px;
-    user-select: none;
-}
-
-.radioCardItem label:before {
-    content: "";
-    display: inline-block;
-    width: 17px;
-    height: 18px;
-    position: absolute;
-    left: 0;
-    bottom: 1px;
-}
-
 .radioCardItem:checked {
     background: #5e0b77;
 }
@@ -171,4 +151,9 @@ select:not([multiple]) {
 
 select::-ms-expand {
     display: none;
+}
+
+input[type='radio']:after {
+    background: var(--tg-theme-button-color);
+    border: 1px solid white;
 }
