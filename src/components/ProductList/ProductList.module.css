@@ -154,6 +154,9 @@ select::-ms-expand {
 }
 
 input[type='radio']:after {
-    background: #999999c0;
     border: 1px solid #999;
+}
+
+input[type='radio'] {
+    background: yellowgreen;
 }
