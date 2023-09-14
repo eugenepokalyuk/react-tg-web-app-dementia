@@ -1,6 +1,8 @@
 import React from 'react';
 import './ProductItem.css';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { ReactComponent as ArrowLeft } from '../../images/arrowLeft.svg'
+import { ReactComponent as ArrowRight } from '../../images/arrowRight.svg'
+import { NavLink } from 'react-router-dom';
 const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions }) => {
     // Создаем массив ссылок на другие вопросы, кроме текущего
     const otherQuestions = allQuestions.filter((q) => q.number !== number);
@@ -13,19 +15,24 @@ const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions
             </div>
 
             <div className="question-body">
+                <div className="body-container">
+                    {input}
+                </div>
+            </div>
+
+            <div className="question-arrows">
                 <button className="question-prev" onClick={onPrevClick}>
-                    <FaArrowLeft />
+                    <ArrowLeft />
                 </button>
-                {input}
                 <button className="question-next" onClick={onNextClick}>
-                    <FaArrowRight />
+                    <ArrowRight />
                 </button>
             </div>
             <div className="question-footer">
                 {otherQuestions.map((q) => (
-                    <a key={q.number} href={`#${q.number}`} className="question-link">
+                    <NavLink key={q.number} href={`#${q.number}`} className="question-link">
                         {q.number}
-                    </a>
+                    </NavLink>
                 ))}
             </div>
         </div>

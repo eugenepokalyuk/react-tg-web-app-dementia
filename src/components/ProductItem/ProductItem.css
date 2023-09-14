@@ -1,5 +1,4 @@
 .question {
-    border: 1px solid #ccc;
     margin: 10px;
     padding: 10px;
 }
@@ -29,18 +28,60 @@
 
 .question-body {
     margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-arrows {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .question-footer {
     margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .question-link {
-    margin-right: 5px;
-    text-decoration: underline;
-    color: blue;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    background: #e2e2e2;
+    color: #999;
+
+    border-radius: 100%;
+
+    margin: 4px;
 }
 
 .question-link:hover {
     text-decoration: none;
+}
+
+.body-container {
+    /* width: 100%; */
+    width: 100%;
+}
+
+.body-container input[type="text"],
+input[type="email"] {
+    width: 100%;
+}
+
+label {
+    padding-left: 4px;
+}
+
+.question-prev,
+.question-next {
+    cursor: pointer;
 }

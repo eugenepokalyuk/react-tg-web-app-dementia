@@ -5,4 +5,7 @@
     border: none;
     outline: none;
     cursor: pointer;
+    background: #5e0b77;
+    color: #fff;
+    border-radius: 60px;
 }
