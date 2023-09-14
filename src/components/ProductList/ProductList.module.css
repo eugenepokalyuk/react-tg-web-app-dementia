@@ -71,7 +71,7 @@ select {
 }
 
 .radioCardItem input {
-    width: 32px;
+    /* width: 32px;
     height: 32px;
     flex-shrink: 0;
     display: inline-block;
@@ -80,7 +80,7 @@ select {
     background-color: transparent;
     border: 1px solid #5e0b77;
     border-radius: 50%;
-    cursor: pointer;
+    cursor: pointer; */
 }
 
 .radioCardItem:checked {
@@ -158,5 +158,10 @@ input[type='radio']:after {
 }
 
 input[type='radio'] {
-    background: yellowgreen;
+    appearance: none;
+    display: inline-block;
+    margin: 0;
+    vertical-align: baseline;
+    width: 32px;
+    height: 32px;
 }

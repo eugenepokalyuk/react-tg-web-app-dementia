@@ -91,8 +91,8 @@ const ProductList = () => {
                     <div className={styles.radioCard}>
                         {currentQuestion.options.map((option, index) => (
                             <div key={index} className={styles.radioCardItem}>
-                                <input type="radio" value={option} name={`question - ${currentQuestion.number}`} />
-                                <label>{option}</label>
+                                <input type="radio" id={index} value={option} name={`question - ${currentQuestion.number}`} />
+                                <label for={index}>{option}</label>
                             </div>
                         ))}
                     </div>
