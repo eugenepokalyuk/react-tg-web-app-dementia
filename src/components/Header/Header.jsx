@@ -2,17 +2,23 @@ import React from 'react';
 import Button from "../Button/Button";
 import { useTelegram } from "../../services/hooks/useTelegram";
 import './Header.css';
+import { ReactComponent as Logo } from '../../images/logo.svg'
 
 const Header = () => {
     const { user, onClose } = useTelegram();
 
     return (
-        <div className={'header'}>
-            <Button onClick={onClose}>Закрыть</Button>
-            <span className={'username'}>
-                {user?.username}
-            </span>
-        </div>
+        <header className={'header'}>
+            <nav className={'nav'}>
+                <Button onClick={onClose}>Закрыть</Button>
+                <span className={'username'}>
+                    {user?.username}
+                </span>
+            </nav>
+            <div className={'mt6'}>
+                <Logo className={'logo'} />
+            </div>
+        </header>
     );
 };
 
