@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect } from "react";
 import { useTelegram } from "../../services/hooks/useTelegram";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer"
 import { Route, Routes } from 'react-router-dom'
 import ProductList from "../ProductList/ProductList";
 import Form from "../Form/Form";
@@ -20,6 +21,7 @@ function App() {
         <Route index element={<ProductList />} />
         <Route path={'form'} element={<Form />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
