@@ -61,7 +61,7 @@ const ProductList = () => {
                 return (
                     <div className={styles.radioCard}>
                         <input type="text" min="1" max="31" />
-                        <select name="months" className='select-css'>
+                        <select name="months" className='select'>
                             <option value="1">Январь</option>
                             <option value="2">Февраль</option>
                             <option value="3">Март</option>
@@ -75,7 +75,7 @@ const ProductList = () => {
                             <option value="11">Ноябрь</option>
                             <option value="12">Декабрь</option>
                         </select>
-                        <select name="years" className='select-css'>
+                        <select name="years" className='select'>
                             {Array.from({ length: 103 }, (_, i) => 1922 + i).map((year) => (
                                 <option key={year} value={year}>{year}</option>
                             ))}
