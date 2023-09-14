@@ -154,6 +154,6 @@ select::-ms-expand {
 }
 
 input[type='radio']:after {
-    background: var(--tg-theme-button-color);
-    border: 1px solid white;
+    background: #999999c0;
+    border: 1px solid #999;
 }
