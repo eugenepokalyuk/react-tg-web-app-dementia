@@ -15,7 +15,7 @@ const Header = () => {
                     {user?.username}
                 </span>
             </nav>
-            <div className={'mt6'}>
+            <div className={'mt6 flex'}>
                 <Logo className={'logo'} />
             </div>
         </header>
