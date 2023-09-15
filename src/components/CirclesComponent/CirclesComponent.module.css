@@ -1,5 +1,6 @@
 .container {
-    max-width: 100%;
+    /* scale: 0.5; */
+    box-sizing: border-box;
 }
 
 .selectedPoint {
@@ -12,4 +13,22 @@
 
 .circleLine {
     z-index: 1;
+}
+
+text {
+    font-family: 'GothamProBold';
+    font-size: 25px;
+}
+
+.circlesContaier {
+    /* transform: rotate(90deg); */
+    /* height: 100vh;
+    width: 740px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+@media screen and (max-width: 400px) {
 }
