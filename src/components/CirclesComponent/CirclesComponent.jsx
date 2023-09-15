@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './CirclesComponent.module.css'
 import { useMediaQuery } from "react-responsive";
-
+import image from "../../images/5.jpg"
 const CirclesComponent = () => {
 
     const isDesktop = useMediaQuery({
@@ -93,7 +93,11 @@ const CirclesComponent = () => {
                     </svg>
                 </div>
                 :
-                <div className={`${styles.circlesContaier}`}>
+                <div>
+                    <div className={styles.circlesContainer}>
+                        <p className={styles.circlesText}>Соедините круги линией, начиная с цифры 1, чередуя затем цифры и буквы, и завершите на букве Е (1 – А – 2 – Б и т.д.).</p>
+                        <img src={image} alt="" />
+                    </div>
                     <svg width="340" height="740" className={`${styles.container}`} > {/* viewBox="0 0 800 800"*/}
                         {lines.map((line, index) => (
                             <line
@@ -107,54 +111,79 @@ const CirclesComponent = () => {
 
                             />
                         ))}
-                        <circle cx="40" cy="40" r="30" className={selectedCircles.includes("1") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("1")} />
-                        <text x="40" y="50" fontSize="12" textAnchor="middle" fill="white">
-                            1
-                        </text>
-                        <circle cx="50" cy="360" r="30" className={selectedCircles.includes("2") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("2")} />
-                        <text x="50" y="370" fontSize="12" textAnchor="middle" fill="white">
-                            2
-                        </text>
-                        <circle cx="200" cy="300" r="30" className={selectedCircles.includes("3") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("3")} />
-                        <text x="200" y="310" fontSize="12" textAnchor="middle" fill="white">
-                            3
-                        </text>
-                        <circle cx="185" cy="125" r="30" className={selectedCircles.includes("4") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("4")} />
-                        <text x="185" y="135" fontSize="12" textAnchor="middle" fill="white">
-                            4
-                        </text>
-                        <circle cx="280" cy="450" r="30" className={selectedCircles.includes("5") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("5")} />
-                        <text x="280" y="460" fontSize="12" textAnchor="middle" fill="white">
-                            5
-                        </text>
-                        <circle cx="120" cy="560" r="30" className={selectedCircles.includes("6") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("6")} />
-                        <text x="120" y="570" fontSize="12" textAnchor="middle" fill="white">
-                            6
-                        </text>
-                        <circle cx="60" cy="210" r="30" className={selectedCircles.includes("А") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("А")} />
-                        <text x="60" y="220" fontSize="12" textAnchor="middle" fill="white">
-                            А
-                        </text>
-                        <circle cx="160" cy="410" r="30" className={selectedCircles.includes("Б") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("Б")} />
-                        <text x="160" y="420" fontSize="12" textAnchor="middle" fill="white">
-                            Б
-                        </text>
-                        <circle cx="130" cy="260" r="30" className={selectedCircles.includes("В") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("В")} />
-                        <text x="130" y="270" fontSize="12" textAnchor="middle" fill="white">
-                            В
-                        </text>
-                        <circle cx="300" cy="280" r="30" className={selectedCircles.includes("Г") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("Г")} />
-                        <text x="300" y="290" fontSize="12" textAnchor="middle" fill="white">
-                            Г
-                        </text>
-                        <circle cx="300" cy="710" r="30" className={selectedCircles.includes("Д") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("Д")} />
-                        <text x="300" y="720" fontSize="12" textAnchor="middle" fill="white">
-                            Д
-                        </text>
-                        <circle cx="60" cy="700" r="30" className={selectedCircles.includes("Е") ? styles.selectedPoint : styles.nonSelectedPoint} onClick={() => handleCircleClick("Е")} />
-                        <text x="60" y="710" fontSize="12" textAnchor="middle" fill="white">
-                            Е
-                        </text>
+                        <g onClick={() => handleCircleClick("1")}>
+                            <circle cx="40" cy="40" r="30" className={selectedCircles.includes("1") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="40" y="50" fontSize="12" textAnchor="middle" fill="white">
+                                1
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("2")}>
+                            <circle cx="50" cy="360" r="30" className={selectedCircles.includes("2") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="50" y="370" fontSize="12" textAnchor="middle" fill="white">
+                                2
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("3")}>
+                            <circle cx="200" cy="300" r="30" className={selectedCircles.includes("3") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="200" y="310" fontSize="12" textAnchor="middle" fill="white">
+                                3
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("4")}>
+                            <circle cx="185" cy="125" r="30" className={selectedCircles.includes("4") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="185" y="135" fontSize="12" textAnchor="middle" fill="white">
+                                4
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("5")}>
+                            <circle cx="280" cy="450" r="30" className={selectedCircles.includes("5") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="280" y="460" fontSize="12" textAnchor="middle" fill="white">
+                                5
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("6")}>
+                            <circle cx="120" cy="560" r="30" className={selectedCircles.includes("6") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="120" y="570" fontSize="12" textAnchor="middle" fill="white">
+                                6
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("А")}>
+                            <circle cx="60" cy="210" r="30" className={selectedCircles.includes("А") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="60" y="220" fontSize="12" textAnchor="middle" fill="white">
+                                А
+                            </text>
+                        </g>
+
+                        <g onClick={() => handleCircleClick("Б")}>
+                            <circle cx="160" cy="410" r="30" className={selectedCircles.includes("Б") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="160" y="420" fontSize="12" textAnchor="middle" fill="white">
+                                Б
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("В")}>
+                            <circle cx="130" cy="260" r="30" className={selectedCircles.includes("В") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="130" y="270" fontSize="12" textAnchor="middle" fill="white">
+                                В
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("Г")}>
+                            <circle cx="300" cy="280" r="30" className={selectedCircles.includes("Г") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="300" y="290" fontSize="12" textAnchor="middle" fill="white">
+                                Г
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("Д")}>
+                            <circle cx="300" cy="710" r="30" className={selectedCircles.includes("Д") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="300" y="720" fontSize="12" textAnchor="middle" fill="white">
+                                Д
+                            </text>
+                        </g>
+                        <g onClick={() => handleCircleClick("Е")}>
+                            <circle cx="60" cy="700" r="30" className={selectedCircles.includes("Е") ? styles.selectedPoint : styles.nonSelectedPoint} />
+                            <text x="60" y="710" fontSize="12" textAnchor="middle" fill="white">
+                                Е
+                            </text>
+                        </g>
                     </svg>
                 </div>
             }
