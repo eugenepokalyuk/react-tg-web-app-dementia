@@ -56,6 +56,13 @@ const ProductList = () => {
         }
     };
 
+    const handleRadioClick = (index) => {
+        const radioButton = document.getElementById(index);
+        if (radioButton) {
+            radioButton.click();
+        }
+    };
+
     const renderInput = () => {
         switch (currentQuestion.type) {
             case 'date':
@@ -99,8 +106,12 @@ const ProductList = () => {
                 return (
                     <div className={styles.radioCard}>
                         {currentQuestion.options.map((option, index) => (
-                            <div key={index} className={styles.radioCardItem}>
-                                <input type="radio" id={index} value={option} name={`question - ${currentQuestion.number}`} />
+                            <div
+                                key={index}
+                                className={styles.radioCardItem}
+                                onClick={() => handleRadioClick(index)}
+                            >
+                                <input type="radio" id={index} value={option} name={`question-${currentQuestion.number}`} />
                                 <label htmlFor={index}>{option}</label>
                             </div>
                         ))}
@@ -145,7 +156,6 @@ const ProductList = () => {
                 return <button className={styles.button}>Понятно. Далее</button>;
             case 'circle':
                 return <CirclesComponent />;
-            // Дополнительные типы вопросов и соответствующие им поля ввода
         }
     };
 
