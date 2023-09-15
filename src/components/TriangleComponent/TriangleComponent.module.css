@@ -1,0 +1,23 @@
+.container {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.svg {
+    margin-top: 20px;
+}
+
+.line {
+    stroke: black;
+    stroke-width: 2px;
+    cursor: pointer;
+}
+
+.selectedLine {
+    stroke: red;
+    stroke-width: 3px;
+    cursor: pointer;
+}
