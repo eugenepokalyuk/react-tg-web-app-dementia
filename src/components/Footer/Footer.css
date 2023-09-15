@@ -5,8 +5,11 @@
     align-items: center;
     margin-top: 40px;
     padding: 32px 22px;
-    background: #e5e5e5;
+    /* background: #e5e5e5; */
     text-align: center;
+
+    background: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
 }
 
 .username {
