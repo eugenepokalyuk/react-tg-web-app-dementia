@@ -23,3 +23,7 @@
 .mt6 {
     margin-top: calc(6 * 4px);
 }
+
+.flex {
+    display: flex;
+}
