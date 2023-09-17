@@ -1,0 +1,61 @@
+.inputFile {
+    position: relative;
+    display: inline-block;
+}
+
+.inputFile span {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 14px;
+    vertical-align: middle;
+    color: rgb(255 255 255);
+    text-align: center;
+    border-radius: 60px;
+    background-color: #5e0b77;
+    line-height: 22px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    transition: background-color 0.2s;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 60px;
+
+    font-family: "Roboto",sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.inputFile input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.inputFile input[type=file]:focus+span {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+.inputFile:hover span {
+    background-color: #7f2f97;
+}
+
+.inputFile:active span {
+    background-color: #49085c;
+}
+
+/* Disabled */
+.inputFile input[type=file]:disabled+span {
+    background-color: #eee;
+}
