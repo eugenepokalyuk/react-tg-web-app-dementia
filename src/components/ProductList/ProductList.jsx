@@ -42,7 +42,6 @@ const questions = [
 
 const ProductList = () => {
     const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
-    // const [currentQuestionNumber, setCurrentQuestionNumber] = useState(questions[0].number);
 
     const handlePrevClick = () => {
         const currentIndex = questions.findIndex((q) => q.number === currentQuestion.number);
@@ -101,10 +100,10 @@ const ProductList = () => {
             case 'text&pictures':
                 return (
                     <div className={styles.container}>
-                        <img src={image1} alt="" className={styles.mb2} />
+                        <img src={image1} alt="" className={`${styles.mb2} ${styles.mt2}`} />
                         <input type="text" className={`${styles.input}`} />
 
-                        <img src={image2} alt="" className={styles.mb2} />
+                        <img src={image2} alt="" className={`${styles.mb2} ${styles.mt2}`} />
                         <input type="text" className={`${styles.input}`} />
                     </div>
                 )
@@ -124,7 +123,7 @@ const ProductList = () => {
                             </li>
                         </ol>
                         <img src={image3} alt="" className={`${styles.mb4}`} />
-                        <ButtonFile className={styles.mt4}/>
+                        <ButtonFile className={styles.mt4} />
                     </div>
                 );
             case 'triangle':

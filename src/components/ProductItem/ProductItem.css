@@ -99,3 +99,12 @@ label {
 .question-next {
     cursor: pointer;
 }
+
+.question-link.selected .q {
+    color: red;
+}
+
+.selected {
+    background: #00926f;
+    color: #fff;
+}

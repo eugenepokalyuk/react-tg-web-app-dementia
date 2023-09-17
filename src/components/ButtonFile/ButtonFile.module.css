@@ -1,6 +1,14 @@
 .inputFile {
     position: relative;
     display: inline-block;
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form {
+    width: 100%;
 }
 
 .inputFile span {
@@ -29,7 +37,7 @@
     align-items: center;
     padding: 30px 60px;
 
-    font-family: "Roboto",sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 900;
     text-transform: uppercase;
 }

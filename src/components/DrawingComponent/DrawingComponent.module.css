@@ -1,5 +1,11 @@
 .container {
     width: 100%;
+    padding: 10px;
+}
+
+.list {
+    padding: 16px;
+    margin: 16px;
 }
 
 .selectedPoint {

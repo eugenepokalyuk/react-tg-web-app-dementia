@@ -30,21 +30,17 @@ const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions
             </div>
 
             <div className="question-footer">
-                {otherQuestions.map((q) => (
+                {/* {otherQuestions.map((q) => (
                     <NavLink key={q.number} to={`#${q.number}`} className="question-link">
                         {q.number}
                     </NavLink>
-                ))}
-            </div>
-
-            {/*             
-            <div className="question-footer">
-                {otherQuestions.map((q) => (
-                    <NavLink key={q.number} href={`#${q.number}`} className="question-link">
-                        {q.number}
+                ))} */}
+                {allQuestions.map((q) => (
+                    <NavLink key={q.number} to={`#${q.number}`} className={`question-link ${q.number === number ? "selected" : ""}`}>
+                        {<span className={`q${q.number}`}>{q.number}</span>}
                     </NavLink>
                 ))}
-            </div> */}
+            </div>
         </div>
     );
 };
