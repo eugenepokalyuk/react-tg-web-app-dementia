@@ -2,10 +2,6 @@
     margin: 10px;
     padding: 10px;
     min-height: 80vh;
-
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
 }
 
 .question-header {
@@ -57,6 +53,7 @@
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .question-link {

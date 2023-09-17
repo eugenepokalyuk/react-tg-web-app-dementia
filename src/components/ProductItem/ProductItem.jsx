@@ -28,13 +28,23 @@ const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions
                     <ArrowRight />
                 </button>
             </div>
+
+            <div className="question-footer">
+                {otherQuestions.map((q) => (
+                    <NavLink key={q.number} to={`#${q.number}`} className="question-link">
+                        {q.number}
+                    </NavLink>
+                ))}
+            </div>
+
+            {/*             
             <div className="question-footer">
                 {otherQuestions.map((q) => (
                     <NavLink key={q.number} href={`#${q.number}`} className="question-link">
                         {q.number}
                     </NavLink>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };

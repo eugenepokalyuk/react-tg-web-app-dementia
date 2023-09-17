@@ -4,6 +4,8 @@ import ProductItem from "../ProductItem/ProductItem";
 import DrawingComponent from "../DrawingComponent/DrawingComponent"
 import CirclesComponent from "../CirclesComponent/CirclesComponent"
 import TriangleComponent from "../TriangleComponent/TriangleComponent"
+import DateComponent from '../DateComponent/DateComponent';
+import ButtonFile from '../ButtonFile/ButtonFile';
 
 import image1 from '../../images/1.jpg'
 import image2 from '../../images/2.jpg'
@@ -32,7 +34,7 @@ const questions = [
     { number: 19, title: 'Тест на память. Выполните это задание в самом конце, когда работа с тестом будет прекращена. Напишите «Я закончил(а)» в конце теста.', type: 'button' }, // 1 кнопка далее
     { number: 20, title: 'Скопируйте рисунок', type: 'file' }, // Картинка + Текст + Кнопка принять файл
     { number: 21, title: 'Нарисуйте циферблат', type: 'drawing' }, // Текст + Кнопка принять файл
-    { number: 22, title: 'Напишите названия 12 разных стран.', type: 'text', count: 12 }, // 12 полей для ввода
+    { number: 22, title: 'Напишите названия 12 разных стран.', type: 'countries' }, // 12 полей для ввода
     { number: 23, title: 'Соедините круги', type: 'circle' }, // Круглишки на экране с символами 1,2,3,4,5,А,Б,В,Г,Д,Е нужно реализовать: "Соедините круги линией, начиная с цифры 1, чередуя затем цифры и буквы, и завершите на букве Е (1 – А – 2 – Б и т.д.)."
     { number: 24, title: 'Уберите лишние линии', type: 'triangle' }, // "На рисунке четыре треугольника. Удалите 2 линии так, чтобы осталось 3 треугольника. Линий, не образующих фигуры, быть не должно. Чтобы убрать линию, кликните по ней."
     { number: 25, title: 'Вы все сделали?', type: 'text' } // 1 поле для
@@ -40,6 +42,7 @@ const questions = [
 
 const ProductList = () => {
     const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
+    // const [currentQuestionNumber, setCurrentQuestionNumber] = useState(questions[0].number);
 
     const handlePrevClick = () => {
         const currentIndex = questions.findIndex((q) => q.number === currentQuestion.number);
@@ -66,41 +69,20 @@ const ProductList = () => {
         switch (currentQuestion.type) {
             case 'date':
                 return (
-                    <div className={styles.radioCard}>
-                        <input type="text" min="1" max="31" />
-                        <select name="months" className='select'>
-                            <option value="1">Январь</option>
-                            <option value="2">Февраль</option>
-                            <option value="3">Март</option>
-                            <option value="4">Апрель</option>
-                            <option value="5">Май</option>
-                            <option value="6">Июнь</option>
-                            <option value="7">Июль</option>
-                            <option value="8">Август</option>
-                            <option value="9">Сентябрь</option>
-                            <option value="10">Октябрь</option>
-                            <option value="11">Ноябрь</option>
-                            <option value="12">Декабрь</option>
-                        </select>
-                        <select name="years" className='select'>
-                            {Array.from({ length: 103 }, (_, i) => 1922 + i).map((year) => (
-                                <option key={year} value={year}>{year}</option>
-                            ))}
-                        </select>
-                    </div>
+                    <DateComponent />
                 )
             case 'email':
                 return (
                     <>
-                        <input type={currentQuestion.type} />
+                        <input type={currentQuestion.type} className={`${styles.input}`} />
                         <div className={`${styles.mt4} ${styles.termsForm}`}>
-                            <input type="checkbox" id="terms" name="scales" />
-                            <label htmlFor="terms">Я согласен(а) на обработку <NavLink to="https://xn--d1acamsh7dwd.net/Soglasie_na_obrabotku_personalnih_dannih.pdf">персональных данных</NavLink></label>
+                            <input className={`${styles.customCheckbox}`} type="checkbox" id="terms" name="scales" />
+                            <label htmlFor="terms">Я согласен(а) на обработку <NavLink className={styles.link} to="#notFound">персональных данных</NavLink></label>
                         </div>
                     </>
                 );
             case 'text':
-                return <input type={currentQuestion.type} />;
+                return <input type={currentQuestion.type} className={`${styles.input}`} />;
             case 'radio':
                 return (
                     <div className={styles.radioCard}>
@@ -120,10 +102,10 @@ const ProductList = () => {
                 return (
                     <div className={styles.container}>
                         <img src={image1} alt="" className={styles.mb2} />
-                        <input type="text" />
+                        <input type="text" className={`${styles.input}`} />
 
                         <img src={image2} alt="" className={styles.mb2} />
-                        <input type="text" />
+                        <input type="text" className={`${styles.input}`} />
                     </div>
                 )
             case 'drawing':
@@ -141,8 +123,8 @@ const ProductList = () => {
                                 </ul>
                             </li>
                         </ol>
-                        <img src={image3} alt="" />
-                        <input type="file" />
+                        <img src={image3} alt="" className={`${styles.mb4}`} />
+                        <ButtonFile className={styles.mt4}/>
                     </div>
                 );
             case 'triangle':
@@ -153,6 +135,26 @@ const ProductList = () => {
                 return <button className={styles.button}>Понятно. Далее</button>;
             case 'circle':
                 return <CirclesComponent />;
+            case 'countries':
+                return (
+                    <>
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                    </>
+                )
         }
     };
 
