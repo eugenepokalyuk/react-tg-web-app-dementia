@@ -137,21 +137,21 @@ const ProductList = () => {
             case 'countries':
                 return (
                     <>
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
 
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
 
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
 
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input} ${styles.mt2}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
+                        <input type="text" className={`${styles.input} ${styles.mt1}`} />
                     </>
                 )
         }

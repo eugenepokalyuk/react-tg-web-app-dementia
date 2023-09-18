@@ -191,8 +191,8 @@ input[type='radio'] {
     margin-bottom: calc(4 * 4px);
 }
 
-.mt2 {
-    margin-top: calc(2 * 4px);
+.mt1 {
+    margin-top: calc(1 * 4px);
 }
 
 .mt2 {
@@ -216,14 +216,14 @@ input[type='radio'] {
 }
 
 .customCheckbox+label {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
     align-items: center;
     justify-content: center;
 
-    user-select: none;
+    user-select: none; */
 }
 
 .customCheckbox+label::before {
