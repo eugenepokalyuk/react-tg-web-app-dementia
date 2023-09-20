@@ -4,8 +4,10 @@ import ProductItem from "../ProductItem/ProductItem";
 import DrawingComponent from "../DrawingComponent/DrawingComponent"
 import CirclesComponent from "../CirclesComponent/CirclesComponent"
 import TriangleComponent from "../TriangleComponent/TriangleComponent"
-import DateComponent from '../DateComponent/DateComponent';
 import ButtonFile from '../ButtonFile/ButtonFile';
+
+import { useDispatch } from 'react-redux';
+import { addAnswer } from '../../services/actions/example'
 
 import image1 from '../../images/1.jpg'
 import image2 from '../../images/2.jpg'
@@ -41,7 +43,13 @@ const questions = [
 ];
 
 const ProductList = () => {
+
+    const dispatch = useDispatch();
     const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
+    const [userAnswers, setUserAnswers] = useState({});
+    const [currentAnswer, setCurrentAnswer] = useState('');
+
+    // console.log('userAnswers', userAnswers);
 
     const handlePrevClick = () => {
         const currentIndex = questions.findIndex((q) => q.number === currentQuestion.number);
@@ -53,9 +61,17 @@ const ProductList = () => {
     const handleNextClick = () => {
         const currentIndex = questions.findIndex((q) => q.number === currentQuestion.number);
         if (currentIndex < questions.length - 1) {
+            const updatedAnswers = { ...userAnswers, [currentQuestion.number]: userAnswers[questions[currentIndex].number] };
+            setUserAnswers(updatedAnswers);
+
             setCurrentQuestion(questions[currentIndex + 1]);
+            setCurrentAnswer(userAnswers[questions[currentIndex + 1].number] || ''); // Set the current answer for the next question
+
+            console.log('updatedAnswers', updatedAnswers)
+            dispatch(addAnswer(updatedAnswers))
         }
     };
+
 
     const handleRadioClick = (index) => {
         const radioButton = document.getElementById(index);
@@ -64,16 +80,135 @@ const ProductList = () => {
         }
     };
 
+    const handleAnswerChange = (questionNumber, answer) => {
+        const updatedAnswers = { ...userAnswers, [questionNumber]: answer };
+        setUserAnswers(updatedAnswers);
+    };
+
+
+    const handleMultiAnswerChange = (questionNumber, selectDay, selectedMonth, selectedYear) => {
+        setSelectValueDay(selectDay);
+        setSelectValueMonth(selectedMonth);
+        setSelectValueYear(selectedYear);
+
+        const updatedAnswers = {
+            ...userAnswers,
+            [questionNumber]: {
+                selectDay,
+                selectedMonth,
+                selectedYear,
+            },
+        };
+        setUserAnswers(updatedAnswers);
+    };
+
+    const handleDualAnswerChange = (questionNumber, one, two) => {
+
+        setOneAnswer(one);
+        setTwoAnswer(two);
+
+        const updatedAnswers = {
+            ...userAnswers,
+            [questionNumber]: {
+                oneAnswer,
+                twoAnswer,
+            },
+        };
+        setUserAnswers(updatedAnswers);
+    };
+
+    const [selectValueDay, setSelectValueDay] = useState('');
+    const [selectValueMonth, setSelectValueMonth] = useState('');
+    const [selectValueYear, setSelectValueYear] = useState('');
+
+    const [oneAnswer, setOneAnswer] = useState('');
+    const [twoAnswer, setTwoAnswer] = useState('');
+
+    const handleFileChange = (e, questionNumber) => {
+        if (e.target.files) {
+            const file = e.target.files[0];
+
+            if (!file) {
+                return;
+            } else {
+                fetch('https://httpbin.org/post', {
+                    method: 'POST',
+                    body: file,
+                    headers: {
+                        'content-type': file.type,
+                        'content-length': file.size,
+                    },
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        const updatedAnswers = {
+                            ...userAnswers,
+                            [questionNumber]: {
+                                fileData: data,
+                            },
+                        };
+                        setUserAnswers(updatedAnswers);
+                    })
+                    .catch((err) => console.error(err));
+            }
+        }
+    };
+
+
     const renderInput = () => {
         switch (currentQuestion.type) {
             case 'date':
                 return (
-                    <DateComponent />
+                    <div className={styles.radioCard}>
+                        <input
+                            className={`${styles.mb4} ${styles.input}`}
+                            type="text"
+                            min="1"
+                            max="31"
+                            value={selectValueDay}
+                            onChange={(event) => handleMultiAnswerChange(currentQuestion.number, event.target.value, selectValueMonth, selectValueYear)}
+                        />
+
+                        <select
+                            name="months"
+                            className={styles.select}
+                            value={selectValueMonth}
+                            onChange={(event) => handleMultiAnswerChange(currentQuestion.number, selectValueDay, event.target.value, selectValueYear)}
+                        >
+                            <option key={1} value={1}>Январь</option>
+                            <option key={2} value={2}>Февраль</option>
+                            <option key={3} value={3}>Март</option>
+                            <option key={4} value={4}>Апрель</option>
+                            <option key={5} value={5}>Май</option>
+                            <option key={6} value={6}>Июнь</option>
+                            <option key={7} value={7}>Июль</option>
+                            <option key={8} value={8}>Август</option>
+                            <option key={9} value={9}>Сентябрь</option>
+                            <option key={10} value={10}>Октябрь</option>
+                            <option key={11} value={11}>Ноябрь</option>
+                            <option key={12} value={12}>Декабрь</option>
+                        </select>
+                        <select
+                            name="years"
+                            className={styles.select}
+                            value={selectValueYear}
+                            onChange={(event) => handleMultiAnswerChange(currentQuestion.number, selectValueDay, selectValueMonth, event.target.value)}
+                        >
+                            {Array.from({ length: 103 }, (_, i) => 1922 + i).map((year) => (
+                                <option key={year} value={year}>{year}</option>
+                            ))}
+                        </select>
+                    </div>
                 )
             case 'email':
                 return (
                     <>
-                        <input type={currentQuestion.type} className={`${styles.input}`} />
+                        <input
+                            type={currentQuestion.type}
+                            className={`${styles.input}`}
+                            value={userAnswers[currentQuestion.number] || ''}
+                            onChange={(event) => handleAnswerChange(currentQuestion.number, event.target.value)}
+                        />
                         <div className={`${styles.mt4} ${styles.termsForm}`}>
                             <input className={`${styles.customCheckbox}`} type="checkbox" id="terms" name="scales" />
                             <label htmlFor="terms">Я согласен(а) на обработку <NavLink className={styles.link} to="#notFound">персональных данных</NavLink></label>
@@ -81,7 +216,12 @@ const ProductList = () => {
                     </>
                 );
             case 'text':
-                return <input type={currentQuestion.type} className={`${styles.input}`} />;
+                return <input
+                    type={currentQuestion.type}
+                    className={styles.input}
+                    value={userAnswers[currentQuestion.number] || ''}
+                    onChange={(event) => handleAnswerChange(currentQuestion.number, event.target.value)}
+                />;
             case 'radio':
                 return (
                     <div className={styles.radioCard}>
@@ -91,7 +231,15 @@ const ProductList = () => {
                                 className={styles.radioCardItem}
                                 onClick={() => handleRadioClick(index)}
                             >
-                                <input type="radio" id={index} value={option} name={`question-${currentQuestion.number}`} />
+                                <input
+                                    type="radio"
+                                    id={index}
+                                    value={option}
+                                    name={`question-${currentQuestion.number}`}
+
+                                    // value={userAnswers[currentQuestion.number] || ''}
+                                    onChange={(event) => handleAnswerChange(currentQuestion.number, event.target.value)}
+                                />
                                 <label htmlFor={index}>{option}</label>
                             </div>
                         ))}
@@ -101,14 +249,42 @@ const ProductList = () => {
                 return (
                     <div className={styles.container}>
                         <img src={image1} alt="" className={`${styles.mb2} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input}`} />
+                        <input
+                            type="text"
+                            className={`${styles.input}`}
+                            value={oneAnswer}
+                            onChange={(event) => handleDualAnswerChange(currentQuestion.number, event.target.value, twoAnswer)}
+                        />
 
                         <img src={image2} alt="" className={`${styles.mb2} ${styles.mt2}`} />
-                        <input type="text" className={`${styles.input}`} />
+                        <input
+                            type="text"
+                            className={`${styles.input}`}
+                            value={twoAnswer}
+                            onChange={(event) => handleDualAnswerChange(currentQuestion.number, oneAnswer, event.target.value)}
+                        />
                     </div>
                 )
             case 'drawing':
-                return <DrawingComponent />;
+                return (
+                    <div className={styles.container}>
+                        <h2>Для прохождения задания, пожалуйста, возьмите чистый лист бумаги (постарайтесь использовать нелинованный лист белого цвета).</h2>
+                        <ol className={styles.fileContainer}>
+                            <li>С помощью доступных электронных устройств сфотографируйте ваш рисунок.</li>
+                            <li>Любым доступным способом перенесите фотографию на компьютер, с которого Вы проходите тестирование:
+                                <ul>
+                                    <li>перемещение с помощью USB накопителя</li>
+                                    <li>перемещение с помощью проводного подключения устройства</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>Нарисуйте циферблат и разместите на нем цифры. Расположите стрелки так, чтобы часы показывали без десяти минут 14 часов.</p>
+                        <label className={`${styles.inputFile}`}>
+                            <input type="file" name="file" accept="image/*" onChange={(event) => handleFileChange(event, currentQuestion.number)} />
+                            <span>Добавить файл</span>
+                        </label>
+                    </div>
+                )
             case 'file':
                 return (
                     <div className={styles.container}>
@@ -123,7 +299,10 @@ const ProductList = () => {
                             </li>
                         </ol>
                         <img src={image3} alt="" className={`${styles.mb4}`} />
-                        <ButtonFile className={styles.mt4} />
+                        <label className={`${styles.inputFile}`}>
+                            <input type="file" name="file" accept="image/*" onChange={(event) => handleFileChange(event, currentQuestion.number)} />
+                            <span>Добавить файл</span>
+                        </label>
                     </div>
                 );
             case 'triangle':
@@ -131,7 +310,11 @@ const ProductList = () => {
                     <TriangleComponent />
                 )
             case 'button':
-                return <button className={styles.button}>Понятно. Далее</button>;
+                return <button
+                    className={styles.button}
+                    onClick={() => handleAnswerChange(currentQuestion.number, "ok")}
+                >Понятно, далее</button>;
+            // return "";
             case 'circle':
                 return <CirclesComponent />;
             case 'countries':

@@ -1,18 +1,26 @@
 @font-face {
-  font-family: 'GothamPro';
-  src: url('./fonts/GothamPro.ttf') format('truetype');
+  font-family: 'GolosTextRegular';
+  src: url('./fonts/GolosText-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'GothamProBold';
-  src: url('./fonts/GothamPro-Bold.ttf') format('truetype');
+  font-family: 'GolosTextMedium';
+  src: url('./fonts/GolosText-Medium.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'GolosTextBold';
+  src: url('./fonts/GolosText-Bold.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&display=swap');
 
 body {
   margin: 0;
-  font-family: 'GothamPro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'GolosTextRegular', sans-serif;
+  /* font-family: 'GothamPro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

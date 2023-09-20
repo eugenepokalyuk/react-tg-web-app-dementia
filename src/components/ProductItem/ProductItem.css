@@ -1,6 +1,4 @@
 .question {
-    margin: 10px;
-    padding: 10px;
     min-height: 80vh;
 }
 
@@ -11,7 +9,6 @@
 }
 
 .question-number {
-    /* margin-right: 10px; */
     font-size: 60px;
     color: #999;
     line-height: 65px;
@@ -21,10 +18,10 @@
 
 .question-title {
     color: #5e0b77;
-    font-family: 'GothamProBold';
     text-align: center;
     font-size: 20px;
-    font-weight: 900;
+    padding: 16px;
+    font-family: 'GolosTextBold', sans-serif;
 }
 
 .question-prev,
@@ -36,17 +33,22 @@
 }
 
 .question-body {
-    margin: 10px 0;
+    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .question-arrows {
-    margin: 10px 0;
+    position: fixed;
+    top: 90%;
+    padding: 10px;
+    background: #00926f;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    position: fixed;
+    width: 100%;
 }
 
 .question-footer {
@@ -73,9 +75,6 @@
     margin: 4px;
 
     font-size: 30px;
-    font-weight: 700;
-
-    font-family: 'GothamProBold';
 }
 
 .question-link:hover {
@@ -98,10 +97,6 @@ label {
 .question-prev,
 .question-next {
     cursor: pointer;
-}
-
-.question-link.selected .q {
-    color: red;
 }
 
 .selected {
