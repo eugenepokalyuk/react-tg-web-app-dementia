@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductItem.css';
 import { ReactComponent as ArrowLeft } from '../../images/arrowLeft.svg'
 import { ReactComponent as ArrowRight } from '../../images/arrowRight.svg'
-const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions }) => {
+const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions, error }) => {
     const otherQuestions = allQuestions.filter((q) => q.number !== number);
 
     return (
@@ -17,6 +17,13 @@ const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions
                     {input}
                 </div>
             </div>
+
+            {error
+                &&
+                <div className="error-container">
+                    <p className="error-text">Заполните все данные</p>
+                </div>
+            }
 
             <div className="question-arrows">
                 <button className="question-prev" onClick={onPrevClick}>

@@ -42,7 +42,7 @@
 .question-arrows {
     position: fixed;
     top: 90%;
-    padding: 10px;
+    padding: 10px 30px;
     background: #00926f;
     display: flex;
     justify-content: space-between;
@@ -102,4 +102,14 @@ label {
 .selected {
     background: #00926f;
     color: #fff;
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+}
+
+.error-text {
+    font-family: 'GolosTextBold', sans-serif;
+    color: crimson;
 }
