@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ProductItem from "../ProductItem/ProductItem";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addAnswer } from '../../services/actions/example'
 import data from "../../utils/lines.json"
 import triangle from '../../utils/triangle.json'
@@ -16,6 +16,9 @@ import styles from './ProductList.module.css'
 import questions from '../../utils/questions.json'
 const ProductList = () => {
     const dispatch = useDispatch();
+    const { questions: answers } = useSelector(
+        (store) => store.questions
+    );
     const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
     const [userAnswers, setUserAnswers] = useState({});
     const [currentAnswer, setCurrentAnswer] = useState('');
@@ -504,6 +507,9 @@ const ProductList = () => {
                         />
                     </>
                 )
+            case 'final':
+                console.log('questions', answers);
+                break;
         }
     };
     return (
