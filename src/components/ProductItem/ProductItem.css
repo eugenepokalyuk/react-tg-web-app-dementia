@@ -39,11 +39,22 @@
     align-items: center;
 }
 
+.question-arrow {
+    display: flex;
+    background: #00926f;
+    padding: 16px 16px;
+    border-radius: 100%;
+}
+
+.question-arrow svg {
+    height: 32px;
+    width: 32px;
+}
+
 .question-arrows {
     position: fixed;
     top: 90%;
-    padding: 10px 30px;
-    background: #00926f;
+    padding: 0px 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;

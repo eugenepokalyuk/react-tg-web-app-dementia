@@ -26,10 +26,10 @@ const Question = ({ number, title, input, onPrevClick, onNextClick, allQuestions
             }
 
             <div className="question-arrows">
-                <button className="question-prev" onClick={onPrevClick}>
+                <button className="question-arrow question-prev" onClick={onPrevClick}>
                     <ArrowLeft />
                 </button>
-                <button className="question-next" onClick={onNextClick}>
+                <button className="question-arrow question-next" onClick={onNextClick}>
                     <ArrowRight />
                 </button>
             </div>
